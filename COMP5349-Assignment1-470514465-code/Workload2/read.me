@@ -1,0 +1,28 @@
+Controversial Trending Videos Identification(using Spark) :
+
+Steps to execute:
+1. Ensure all files: run.sh, top_trending_diffs_withRDD.py are in same working directory
+2. Execute command in working directory: chmod 777 *      to give all permissions on all files 
+3. Command to execute: ./run.sh file:///home/hadoop/ output_folder
+4. Executed command has first argument as input folder. It will search for AllVideos_short.csv in that input folder.
+5. If it throws error, ensure that all the scripts are in unix format. They might have been edited on windows and so may give "^M" special character errors. To convert use dos2unix command. If dos2unix is not installed, you can install by sudo yum install dos2unix
+6. To get output file, use command :  hdfs dfs -get output_folder/part-00000 op_1.txt
+7. To check output use command :  cat op_1.txt
+
+Note: This has been tested on AWS EMR 5.21.0(Spark, m5.xlarge, 1 instance)
+
+Output will look like:
+[hadoop@ip-172-31-46-99 ~]$ cat op_1.txt
+('BEePFpC9qG8', 366556, 'Film & Animation', 'DE')
+('RmZ3DPJQo2k', 334594, 'Music', 'KR')
+('1Aoc-cd9eYs', 192222, 'Entertainment', 'GB')
+('QwZT7T-TXT0', 189608, 'Entertainment', 'US')
+('QwZT7T-TXT0', 189605, 'Entertainment', 'GB')
+('PfLCyR6Efvw', 106418, 'Music', 'GB')
+('ZGEoqPpJQLE', 98934, 'Music', 'DE')
+('ZGEoqPpJQLE', 98930, 'Music', 'RU')
+('84LBjXaeKk4', 93961, 'Entertainment', 'FR')
+('84LBjXaeKk4', 93961, 'Entertainment', 'RU')
+[hadoop@ip-172-31-46-99 ~]$ date
+Tue Apr  9 13:05:06 UTC 2019
+

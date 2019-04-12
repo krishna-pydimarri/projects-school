@@ -1,0 +1,38 @@
+Category and Trending Correlation(using Map Reduce - combiner way):
+
+Steps to execute:
+1. Ensure all files: run.sh, mapper_function.py, combiner_function.py, reducer_function.py are in same working directory
+2. Execute command in working directory: chmod 777 *
+3. Command to execute: ./run.sh file:///home/hadoop/AllVideos_short.csv output_folder_final  
+4. The executed command has input parameters as csv file in this workload.
+5. If it throws error, ensure that all the scripts are in unix format. They might have been edited on windows and so may give "^M" special character errors. To convert use dos2unix command. If dos2unix is not installed, you can install by sudo yum install dos2unix  on AWS host
+6. To get output file, use command :  hdfs dfs -get output_folder_final/part-00000 op_final.txt
+7. To check output use command :  cat op_final.txt
+
+Note: This has been tested on AWS EMR 5.21.0(Hadoop, m5.xlarge, 1 instance)
+
+Output will look like :
+[hadoop@ip-172-31-45-90 ~]$  hdfs dfs -get output_folder_final/part-00000 op_final.txt
+[hadoop@ip-172-31-45-90 ~]$ cat op_final.txt
+Comedy:1.21
+Gaming:1.09
+People & Blogs:1.06
+Education:1.06
+Howto & Style:1.09
+Entertainment:1.14
+Travel & Events:1.09
+News & Politics:1.05
+Trailers:1.0
+Pets & Animals:1.07
+Movies:1.25
+Music:1.31
+Autos & Vehicles:1.02
+Nonprofits & Activism:1.06
+Sports:1.14
+Science & Technology:1.16
+Film & Animation:1.17
+Shows:1.56
+[hadoop@ip-172-31-45-90 ~]$ date
+Tue Apr  9 13:26:18 UTC 2019
+
+
