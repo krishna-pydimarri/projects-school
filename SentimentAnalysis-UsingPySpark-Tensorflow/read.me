@@ -1,0 +1,12 @@
+This folder contains 4 .ipynb files, each one representing each stage.
+
+Steps to do:
+1. launch an EMR cluster with 1 master, 4 nodes of m4.2xlarge capacity
+2. Enable JupyterHub while launching. 
+3. Once launched, execute below commands:
+	sudo docker exec jupyterhub useradd -m -s /bin/bash -N krishna
+	sudo docker exec jupyterhub bash -c "echo krishna:krishna | chpasswd"
+4. Launch the jupyterHub by entering https://MasterDNS_name:9443/
+5. Ensure port is open in security
+6. upload notebook and execute. Ensure only one notebook is running in each session and delete any other notebooks.
+
