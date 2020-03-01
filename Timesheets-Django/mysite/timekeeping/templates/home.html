@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+             <p class="display-4">Hello, {{ user.username }}</p>
+	{% else %}
+            	<p class="display-4">Hello, please login</p>
+            	<h2 id="header_1" class="form-header">EDGERED ANALYTICS</h2>
+             <a class="lead" href="{% url 'login' %}">Login</a>
+	{% endif %}
+{% endblock content %}

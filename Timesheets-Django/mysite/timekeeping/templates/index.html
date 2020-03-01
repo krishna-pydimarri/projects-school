@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+            <style>
+            .container {
+            max-width: 1000px;
+            }
+            </style>
+        </head>
+
+        <form action = "" method = "post">
+        {% csrf_token %}
+        <body>
+            <h1>Project</h1>
+            {% if user.is_authenticated %}
+                <p>Logged as {{ user.username }}</p>
+            {% endif %}
+            <p>Select a Project</p>
+
+            <select id = "myList" name = "project">
+               <option value = "1">one</option>
+               <option value = "2">two</option>
+               <option value = "3">three</option>
+               <option value = "4">four</option>
+            </select>
+
+
+            <h1>Employee</h1>
+            <p>Select an Employee</p>
+
+            <select id = "myList" name = "employee">
+               <option value = "1">one</option>
+               <option value = "2">two</option>
+               <option value = "3">three</option>
+               <option value = "4">four</option>
+            </select>
+
+            <h1>Hours</h1>
+            <div class="form-group">
+                <input type="text" name="hours" class="form-control" id="url-box" placeholder="Enter Hours" style="max-width: 300px;" autofocus required>
+            </div>       
+            <div>
+                <br>
+                <input type="submit" value="Submit">
+            </div>
+            
+            <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        </body>
+        </form>
+    </html>
