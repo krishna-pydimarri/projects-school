@@ -1,0 +1,10 @@
+{% if name_list %}
+    <ul>
+    {% for name in name_list %}
+        <li>{{ name.name }}</li>
+        <!-- <a href="{% url 'timekeeping:index' dimemployee.id}"></a> -->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No names are available.</p>
+{% endif %}

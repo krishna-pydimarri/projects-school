@@ -1,0 +1,96 @@
+<html>
+{% load nvd3_tags %}
+<head>
+    {# Jquery CDN : Needed when using jquery_on_ready=True #}
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    {% include_chart_jscss %}
+    {% load_chart charttype chartdata chartcontainer extra %}
+<style>
+body {background-color: #566573;  }
+</style>
+<img src="https://static.wixstatic.com/media/2fb3e9_ec78e6bc77c14741943cce9dff0f8781~mv2.png/v1/fill/w_250,h_46,al_c,q_80,usm_0.66_1.00_0.01/ER-RED.webp" alt="EdgeRed" style="width:250px;height:50px;display: block;margin-left: auto;margin-right: auto;" >
+</head>
+<body>
+<div style="width:1024px;margin:0 auto;background-color:#F0F3F4">
+<h2 style="text-align:center;color:black"> Your work summary for week {{wkno}}</h2>
+<style>
+.myTable { 
+  width: 80%;
+  text-align: center;
+  background-color: #EDC9AF;
+  border-collapse: collapse; 
+  margin:1em auto;
+  }
+.myTable th { 
+  background-color: goldenrod;
+  color: white; 
+  }
+.myTable td, 
+.myTable th { 
+  padding: 10px;
+  border: 1px solid goldenrod; 
+  }
+</style>
+<br>
+<div>
+<table class="myTable">
+  <tr >
+    <th >Day of week</th>
+    <th >Date</th> 
+    <th >Project:TimeSpent</th>
+  </tr>
+  <tr>
+    <td >Monday (Week Start)</td>
+    <td >{{date_day_map.Monday}}</td>
+    <td >{{output_map.Monday}}</td>
+  </tr>
+  <tr>
+    <td >Tuesday</td>
+    <td >{{date_day_map.Tuesday}}</td>
+    <td >{{output_map.Tuesday}}</td>
+  </tr>
+  <tr>
+    <td >Wednesday</td>
+    <td >{{date_day_map.Wednesday}}</td>
+    <td >{{output_map.Wednesday}}</td>
+  </tr>
+    <tr>
+    <td >Thursday</td>
+    <td >{{date_day_map.Thursday}}</td>
+    <td >{{output_map.Thursday}}</td>
+  </tr>
+    <tr>
+    <td>Friday</td>
+    <td>{{date_day_map.Friday}}</td>
+    <td>{{output_map.Friday}}</td>
+  </tr>
+    <tr>
+    <td >Saturday</td>
+    <td >{{date_day_map.Saturday}}</td>
+    <td >{{output_map.Saturday}}</td>
+  </tr>
+    <tr>
+    <td>Sunday (Week End)</td>
+    <td >{{date_day_map.Sunday}}</td>
+    <td >{{output_map.Sunday}}</td>
+  </tr>
+</table>
+</div>
+<br>
+<br>
+<h2 style="text-align:center;color:black"> Graphical view </h2>
+    {% include_container chartcontainer 500 1024 %}
+<script>
+document.getElementById("multibarhorizontalchart_container").style.margin = "0 auto";
+document.getElementById("multibarhorizontalchart_container").style.display = "block";
+
+var x = document.getElementsByClassName("nvd3-svg");
+var i;
+for (i = 0; i < x.length; i++) {
+   x[i].style.margin = "0 auto";
+}
+</script>
+</div>
+</body>
+</html>
+
