@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>COMP5347 Assignment One</title>
+   <link rel="stylesheet" href="index.css" />
+   <script type="text/javascript" src="index.js"></script>
+</head>
+
+<body>
+   <h1>Online Book Store</h1>
+<form method="get" action="">
+<div id="searchBox" class="searchBox">
+   <section class="aContainer">
+      <div class="inputOptions">
+         <input  type="text"  name="search" id="searchTtl">
+            <button type="submit" name="search_button" id="search_button">search</button>
+         </input><p id="searchWarn"></p>
+         <select id="filterCategory">
+            <option value="Category">Category</option>
+         </select>
+         <button  type="submit" name="filter_button" id="filter_button">filter</button>
+      </div>
+      <div class="cartOptions" id="cartOpts">
+         <input type="checkbox" id="darkMode" name="colorsMode" value="dark">
+         <label for="darkMode">Dark Mode</label>
+         <button type="submit" id="add_button">Add to cart</button>
+         <button type="submit" id="reset_button">Reset the cart</button>
+         <img src="images/shopping_cart.png" class="shoppingImg">
+         <p id="numItems">(0)</p>
+      </div>
+   </section>
+</div>   
+<div id="listBox"  class="listBox"> 
+<table id="titlesTbl">
+   <tr>
+      <th colspan="4">Titles</th>
+      <th>Authors</th>
+      <th>Year</th>
+      <th>Price</th>
+      <th>Publisher</th>
+      <th>Category</th>
+   </tr>
+<tbody>
+</tbody>
+</table>
+</div>   
+</form>
+
+</body>
+</html>

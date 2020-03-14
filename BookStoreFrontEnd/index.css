@@ -1,0 +1,157 @@
+﻿/* general text formatting */
+
+h1, h2, h3, nav, footer {
+   font-family: Georgia, Cambria, "Times New Roman", serif;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+  }
+
+body {
+   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+   font-size: 70%;
+}
+
+table {
+   border: collapse; 
+   border-spacing: 0;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 1em;
+   
+}
+table tbody td{
+   border-top: 1pt solid #95BEF0;   
+   line-height: 1.5em;
+   vertical-align: middle;
+   padding: 0.5em 0.75em;
+}
+table th{
+   background-color: #95BEF0 ;
+   height: 3em;
+
+}
+
+.searchBox, .listBox {
+   margin: 0.25em auto;
+   background-color: #EBF4FB;
+   padding: 1em;
+   border: 1pt solid #95BEF0;
+   width: 80%;
+   
+}
+
+div#searchBox { margin-top: 1em; 
+}
+
+.listBox { 
+   margin-top: 1em; 
+   background-color: #FAFCFF;
+   }
+
+.smallImg {
+   max-width: 100%;
+   max-height: 50%;
+   border-radius:4px;
+   padding: 0%;
+}
+.starIcon {
+   max-width: 650%;
+   max-height: 100%;
+   padding: 0%;
+
+}
+
+.ratingRow{
+   width: 6em;
+   display: flex;
+   padding: 1em;
+}
+
+
+.titleItalic {
+   font-style: italic;
+}
+
+.inputOptions {
+   width: 65%;
+   float: left;
+}
+ 
+.cartOptions {
+   margin-left: 35%;
+}
+
+.shoppingImg {
+   width: 3%;
+   height: 3%;
+   vertical-align: middle;
+   
+}
+
+p { display: inline }
+
+.darkModeOn {
+   background-color:#494E52;
+   color: floralwhite;
+
+}
+
+p#searchWarn {
+   color: red;
+}
+
+/*
+h1, h2, h3, nav, footer {
+ font-family: Georgia, Cambria, "Times New Roman", serif;
+}
+body {
+   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+   font-size: 80%;
+}
+
+div#searchBox, div#listBox {
+   margin: 0.25em auto;
+   background-color: #EBF4FB;
+   padding: 1em;
+   border: 1pt solid #95BEF0;
+   width: 80%;
+}
+div#searchBox { margin-top: 1em; }
+div#listBox { 
+   margin-top: 1em; 
+   background-color: #FAFCFF;
+   }
+
+table {
+   border: collapse; 
+   border-spacing: 0;
+   
+}
+
+table tbody td{
+   border-top: 1pt solid #95BEF0;   
+   line-height: 1.5em;
+   vertical-align: middle;
+   padding: 0.5em 0.75em;
+}
+table thead th {
+   text-align: left;
+   padding: 0.25em 0.75em; 
+}
+table thead {
+   background-color: #EBF4FB ;
+}
+
+table tbody td:first-child  {
+   text-align: center;
+   padding: 0.5em 0em;   
+}
+
+caption {
+   background-color: #95BEF0;
+      padding: 0.5em 0.5em; 
+      font-weight: bold;
+      font-size: 1.2em;
+}
+*/
