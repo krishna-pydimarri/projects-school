@@ -8,7 +8,7 @@
 </head>
 
 <body>
-   <h1>Online Book Store</h1>
+
 <form method="get" action="">
 <div id="searchBox" class="searchBox">
    <section class="aContainer">
@@ -18,8 +18,9 @@
          </input><p id="searchWarn"></p>
          <select id="filterCategory">
             <option value="Category">Category</option>
+            <option value="NoCategory">Other</option>
          </select>
-         <button  type="submit" name="filter_button" id="filter_button">filter</button>
+         <button  type="button" name="filter_button" id="filter_button">filter</button>
       </div>
       <div class="cartOptions" id="cartOpts">
          <input type="checkbox" id="darkMode" name="colorsMode" value="dark">
@@ -33,6 +34,7 @@
 </div>   
 <div id="listBox"  class="listBox"> 
 <table id="titlesTbl">
+   <caption>A2ZBooks Online Book Store</caption>
    <tr>
       <th colspan="4">Titles</th>
       <th>Authors</th>

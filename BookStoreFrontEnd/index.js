@@ -14,12 +14,11 @@ function getJsonObject(path, success, error) {
 }
 
 function createHtmlTable(arrayVal) {
-    var old_tbody = document.getElementById("titlesTbl").getElementsByTagName('tbody')[1];
-    var new_tbody = document.createElement('tbody');
+    var old_tbody = document.getElementById("titlesTbl").getElementsByTagName('tbody')[1]; //Get table body by id
+    var new_tbody = document.createElement('tbody'); //create new body element to replace at the end
     arrayVal.forEach(function(rowData) {
-        var row = new_tbody.insertRow();
-        console.log(rowData['img']);
-        console.log('$'+rowData['price']);
+        var row = new_tbody.insertRow(); //add new row in this loop
+        //creating all the cells in row
         var authorCell = document.createElement('td');
         authorCell.appendChild(document.createTextNode(rowData['authors']));
         var yearCell = document.createElement('td');
@@ -59,28 +58,26 @@ function createHtmlTable(arrayVal) {
             if (i<=rowData['rating']){
                 x=filledStarCell.cloneNode(true);
                 ratingRowDiv.appendChild(x);
-                console.log(x);
             }
             else {
                 y=blankStarCell.cloneNode(true);
                 ratingRowDiv.appendChild(y);
-                console.log(blankStarCell);
             }
         }
         ratingImageCell.appendChild(ratingRowDiv);
-        //console.log(ratingImageCell);
+        //appending all rows together 
         var cellsArr = [checkboxCell,titleIconCellMain,titleCell,ratingImageCell,authorCell,yearCell,priceCell,publisherCell,categoryCell];
         cellsArr.forEach(function(cellData){row.appendChild(cellData)});
     });
-    old_tbody.parentNode.replaceChild(new_tbody, old_tbody)
+    old_tbody.parentNode.replaceChild(new_tbody, old_tbody) //replacing tbody with new one created
 }
 
 function createOtherElements(arrayVal) {
+    //to create category filter options in web page
     var divRow = document.getElementById("searchBox");
     var filter = document.getElementById("filterCategory");
     var allCategories= new Array();
     for (i=0;i<arrayVal.length;i++){
-        //console.log(allCategories.indexOf(arrayVal[i]['category']));
         if (allCategories.indexOf(arrayVal[i]['category'])==-1){
         var option = document.createElement("option");
         option.text = arrayVal[i]['category'];
@@ -88,19 +85,19 @@ function createOtherElements(arrayVal) {
         filter.add(option);
         }
     }
-    //console.log(allCategories);
 }
 
 function highlightOnSearch() {
+    //To highlighted the searched elements.
+    //Get search key and check if it matches in Titles column of table. 
+    //Has exception handling mechanism
     var searchText=document.getElementById("searchTtl");
     var table = document.getElementById("titlesTbl");
     searchKey = searchText.value.toUpperCase();
     tr = table.getElementsByTagName("tr");
-    //table.style.backgroundColor = "#FAFCFF";
     var totalSearchResults=0;
     var existingColor="";
     var darkModeCheck=document.getElementById("darkMode");
-    console.log(darkModeCheck.checked);
     if (darkModeCheck.checked==true){
         existingColor="#494E52";
         existingTextColor = "FloralWhite";
@@ -111,17 +108,14 @@ function highlightOnSearch() {
     }
     for (i=1;i<tr.length;i++){
         titleTd = tr[i].getElementsByClassName("titleItalic");
-        //console.log(titleTd);
         var txtVal=titleTd[0].textContent;
-        console.log(txtVal);
-        if (txtVal.toUpperCase().indexOf(searchKey)!=-1 & searchKey!='') {
-            console.log("Highlighting");
+        if (txtVal.toUpperCase().indexOf(searchKey)!=-1 & searchKey!='' & tr[i].style.display!="none") {
                 tr[i].style.backgroundColor = "#DAF7A6";
                 tr[i].style.color = "black";
                 totalSearchResults++;
         }
         else 
-        {   console.log("removing highlight");
+        {   
             tr[i].style.backgroundColor = existingColor;
             tr[i].style.color = existingTextColor;
         }
@@ -138,28 +132,28 @@ function highlightOnSearch() {
 }
 
 function filterCategory(bookList){
-    createHtmlTable(bookList);
-    var category=document.getElementById("filterCategory");
-    var table = document.getElementById("titlesTbl");
-    filterKey = category.value;
+    //createHtmlTable(bookList);
+    const category=document.getElementById("filterCategory");
+    let table = document.getElementById("titlesTbl");
+    let filterKey = category.value;
     tr = table.getElementsByTagName("tr");
+    let displayElements=0;
     for (i=1;i<tr.length;i++){
-        console.log(i);
-        console.log(tr.length);
         categoryTd = tr[i].getElementsByClassName("bookCategory");
-        var categVal=categoryTd[0].textContent;
-        console.log(categVal);
-        console.log(this.filterKey);
-        if (categVal!=this.filterKey & filterKey != "Category") {
-            console.log("removing record");
-            table.deleteRow(i);
-            i=i-1;
+        let categVal=categoryTd[0].textContent;
+        if (categVal!=filterKey & filterKey != "Category") {
+            //table.deleteRow(i);
+            tr[i].style.display="none";
+            //i=i-1;
         }
         else 
         {   
-            console.log("Keeping record");
+            tr[i].style.display="";
+            displayElements++;
+           // console.log("Keeping record");
         }
     }
+    if (displayElements==0){alert("No titles found for the category");}
 }
 
 window.onload = function(e){
@@ -174,18 +168,15 @@ window.onload = function(e){
             var searchClick=document.getElementById("search_button");
             searchClick.addEventListener("click", function(event) {
                 highlightOnSearch();
-                //filterCategory(bookList);
                 event.preventDefault();
             });
             var filterClick=document.getElementById("filter_button");
             filterClick.addEventListener("click", function(event) {
                 filterCategory(bookList);
-           //     highlightOnSearch();
-                event.preventDefault();
             });
             var addClick=document.getElementById("add_button");
             addClick.addEventListener("click", function(event) {
-                var checkTitles= document.getElementsByClassName("titleCheckBox");
+                let checkTitles= document.getElementsByClassName("titleCheckBox");
                 let totalItemsSelected=0;
                 for(i=0;i<checkTitles.length;i++){
                     if (checkTitles[i].checked==true){
@@ -204,7 +195,7 @@ window.onload = function(e){
                     alert('No titles selected to add to cart!');
 
                 }
-                console.log(totalItemsSelected);
+               // console.log(totalItemsSelected);
                 event.preventDefault();
             });
             var resetClick=document.getElementById("reset_button");
